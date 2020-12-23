@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="format-detection" content="telephone=no" />
+  <!-- <link rel="apple-touch-icon" href="./hyf.png" />
+    <link rel="shortcut icon" type="image/png" href="./hyf.png" /> -->
+  <title>HackYourRepo</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div>
+    <section>
+      <header>
+        <h4>HYF Repositories</h4>
+        <select id="selDemo" onchange='myFunction()'>
+          <option selected>Choose a Repo</option>
+          <option id="repoOne" value="0"></option>
+          <option id="repoTwo" value="1"></option>
+          <option id="repoThree" value="2"></option>
+        </select>
+      </header>
+    </section>
+
+
+
+    <section id="myRepos">
+      <p class="repoInfo">Repository: </p>
+      <p><a href="#" id="name"></a></p>
+      <br>
+      <br>
+      <p class="repoInfo">Description: </p>
+      <p id="description"></p>
+      <br>
+      <br>
+      <p class="repoInfo">Forks: </p>
+      <p id="forks"></p>
+      <br>
+      <br>
+      <p class="repoInfo">Updated: </p>
+      <p id="updated"></p>
+
+    </section>
+    <section id="ourContributors">
+      <p class="repoInfo">Contributor: </p>
+      <p id="contributor"></p>
+    </section>
+
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>

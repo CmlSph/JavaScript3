@@ -1,0 +1,81 @@
+/* 
+  Write here your CSS rules for HackYourRepo!
+*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+header {
+  display: flex;
+  height: 3rem;
+  justify-content: start;
+  background-color: blue;
+  align-items: center;
+  margin-top: 5px;
+}
+h4 {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+#selDemo {
+  width: 15%;
+}
+p {
+  float: left;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  margin-left: 20px;
+}
+.repoInfo {
+  font-weight: bold;
+  margin-left: 5px;
+}
+#myRepos {
+  width: 50%;
+  border: 1px solid gray;
+  height: 25vh;
+  float: left;
+  margin-top: 10px;
+  background-color: lightskyblue;
+}
+
+#ourContributors {
+  width: 50%;
+  border: 1px solid gray;
+  height: 25vh;
+  float: right;
+  margin-top: 10px;
+  background-color: lightskyblue;
+}
+
+@media only screen and (max-width: 768px) {
+  #myRepos {
+    width: 100%;
+    flex-direction: column;
+    height: 28vh;
+  }
+
+  #ourContributors {
+    width: 100%;
+    flex-direction: column;
+    align-self: flex-end;
+    height: 28vh;
+  }
+
+  #selDemo {
+    width: 35%;
+  }
+  p {
+    font-size: small;
+  }
+}
