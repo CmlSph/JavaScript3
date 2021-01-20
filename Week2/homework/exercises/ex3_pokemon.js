@@ -1,46 +1,52 @@
 function main(){
 
-    const buttonGetPokemon = document.getElementById("myButton")
-    const repoSelect = document.getElementById("repo")
-    const imageOfPokemon = document.getElementById('pokemonImage');
+    const buttonGetPokemon = document.createElement('button')
+    buttonGetPokemon.id = 'myButton'
+    buttonGetPokemon.innerText = 'Get Pokemon'
+    document.body.appendChild(buttonGetPokemon);
+    const pokemonSelect = document.createElement('select');
+    pokemonSelect.id = 'pokemon';
+    document.body.appendChild(pokemonSelect);
+    const imageOfThePokemon = document.createElement('img');
+    imageOfThePokemon.id = 'pokemonImage';
+    document.body.appendChild(imageOfThePokemon);
+    pokemonImage.style.display = 'block';
+
+ 
+    let pokemonsArray;
+
+    const url = ('https://pokeapi.co/api/v2/pokemon?limit=151')
+
+    function addPokemonToDOM(array) {
+        array.forEach((element, index) => {
+          const pokemonOptions = document.createElement('option');
+          pokemonOptions.innerText = element.name;
+          pokemonSelect.appendChild(pokemonOptions);
+          pokemonOptions.value = index;
+        });
+      };
+
+    function fetchPokemon() {
+        fetch(url)
+          .then(response => response.json())
+          .then(JSONdata => {
+            pokemonsArray = JSONdata.results; 
+            addPokemonToDOM(pokemonsArray);
+          })
+      };
     
-
-    function fetchData() {
-        for (let i = 1; i <= 151; i++){
-            const url = `https://pokeapi.co/api/v2/pokemon/${i}`
-            fetch(url)
+    buttonGetPokemon.addEventListener('click', fetchPokemon);
+    
+    function fetchImage(event) {
+        const urlOfThePokemonImages = pokemonsArray[event.target.value].url;
+            fetch(urlOfThePokemonImages)
             .then(response => response.json())
-            .then((jsonData) => {
-            const pokemonNames = jsonData.name
-                
-            const option = document.createElement('option')
-            option.value = pokemonNames;
-            option.innerText = pokemonNames;
-            repoSelect.appendChild(option)
-        })
-    }
-}
-    buttonGetPokemon.addEventListener('click', fetchData);
-
-    function fetchImage() {
-        for (let i = 1; i <= 151; i++){
-            const url = `https://pokeapi.co/api/v2/pokemon/${i}`
-            fetch(url)
-                .then(response => response.json())
-                .then(jsonData => {
-                const theImageOfThePokemon = jsonData.sprites['front_default'];    
-                if (repoSelect.value===jsonData.species.name){
-                    imageOfPokemon.src = theImageOfThePokemon;
-            
-          }
-      })
-    }
-}
-window.onclick = function (){
-    repoSelect.onchange = function(){
-        fetchImage();
-    }
-}
+            .then(data => {
+            imageOfThePokemon.src = data.sprites.front_default;
+          })
+      };
+    
+    pokemonSelect.addEventListener('change', fetchImage);
 }
 
-window.onload = main()
+window.onload = main();
