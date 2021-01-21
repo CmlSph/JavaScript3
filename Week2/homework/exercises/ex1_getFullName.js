@@ -1,13 +1,18 @@
 function getFullName(firstName) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        if (firstName) {
-          const fullName = `${firstName} Doe`;
-          resolve(console.log(fullName))
-        } else {
-          reject(console.log("You didn't pass in a first name!"))
-        }
-      }, 1000)
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (!firstName) {
+        return reject()
+} 
+      const fullName = `${firstName} Doe`;
+      return resolve(fullName);
+    });
+  }, 1000); 
+}
+getFullName()
+    .then(result => {
+      console.log(result);
     })
-  }
-  getFullName() 
+    .catch(error => {
+      console.log("You didn't provide a first name!");
+    });
